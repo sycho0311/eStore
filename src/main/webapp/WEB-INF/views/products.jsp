@@ -19,12 +19,14 @@
 <!-- Custom styles for this template -->
 <link href="<c:url value="/resources/css/carousel.css"/>"
 	rel="stylesheet">
+<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
+
 </head>
 <body>
 
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-			<a class="navbar-brand" href="#">Carousel</a>
+			<a class="navbar-brand" href="#">eStore</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarCollapse" aria-controls="navbarCollapse"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -32,10 +34,10 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
+					<li class="nav-item active"><a class="nav-link" href="<c:url value="/"/>">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/products"/>">Products</a></li>
 					<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
 					</li>
 				</ul>
@@ -48,35 +50,37 @@
 		</nav>
 	</header>
 
-	<div class="container">
-		<h2>All Products</h2>
-		<p>착한 가격으로 상품을 살펴보세요!!!</p>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Category</th>
-					<th>Price</th>
-					<th>Manufacturer</th>
-					<th>UnitInStock</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="product" items="${products}" >
-					<tr>
-						<td>${product.name}</td>
-						<td>${product.category}</td>
-						<td>${product.price}</td>
-						<td>${product.manufacturer}</td>
-						<td>${product.unitInStock}</td>
-						<td>${product.description}</td>
+	<div class="container-wrapper">
+		<div class="container">
+			<h2>All Products</h2>
+			<p>High quality products and good price.</p>
+			<table class="table table-striped">
+				<thead>
+					<tr class="bg-secondary">
+						<th>Name</th>
+						<th>Category</th>
+						<th>Price</th>
+						<th>Manufacturer</th>
+						<th>UnitInStock</th>
+						<th>Description</th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<c:forEach var="product" items="${products}">
+						<tr>
+							<td>${product.name}</td>
+							<td>${product.category}</td>
+							<td>${product.price}</td>
+							<td>${product.manufacturer}</td>
+							<td>${product.unitInStock}</td>
+							<td>${product.description}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
-
+	
 	<!-- FOOTER -->
 	<footer class="container">
 		<p class="float-right">
