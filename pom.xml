@@ -61,6 +61,14 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- tiles-extras -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
