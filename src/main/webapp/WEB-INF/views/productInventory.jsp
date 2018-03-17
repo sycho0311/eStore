@@ -4,8 +4,8 @@
 
 <div class="container-wrapper">
 	<div class="container">
-		<h2>All Products</h2>
-		<p>High quality products and good price.</p>
+		<h2>Product Inventory</h2>
+		<p>Product Unit in Stock</p>
 		<table class="table table-striped">
 			<thead>
 				<tr class="bg-secondary">
