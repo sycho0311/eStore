@@ -30,5 +30,15 @@
 		<put-attribute name="title" value="Product Inventory page" />
 		<put-attribute name="body" value="/WEB-INF/views/productInventory.jsp" />
 	</definition>
+	
+	<definition name="addProduct" extends="base">
+		<put-attribute name="title" value="Add Product page" />
+		<put-attribute name="body" value="/WEB-INF/views/addProduct.jsp" />
+	</definition>
+	
+	<definition name="updateProduct" extends="base">
+		<put-attribute name="title" value="Update Product page" />
+		<put-attribute name="body" value="/WEB-INF/views/updateProduct.jsp" />
+	</definition>
 
 </tiles-definitions>
