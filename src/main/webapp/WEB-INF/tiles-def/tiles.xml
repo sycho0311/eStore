@@ -40,5 +40,10 @@
 		<put-attribute name="title" value="Update Product page" />
 		<put-attribute name="body" value="/WEB-INF/views/updateProduct.jsp" />
 	</definition>
+	
+	<definition name="viewProduct" extends="base">
+		<put-attribute name="title" value="View Product page" />
+		<put-attribute name="body" value="/WEB-INF/views/viewProduct.jsp" />
+	</definition>
 
 </tiles-definitions>

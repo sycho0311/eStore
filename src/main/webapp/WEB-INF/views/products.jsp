@@ -15,6 +15,7 @@
 					<th>Manufacturer</th>
 					<th>UnitInStock</th>
 					<th>Description</th>
+					<th> </th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,6 +27,7 @@
 						<td>${product.manufacturer}</td>
 						<td>${product.unitInStock}</td>
 						<td>${product.description}</td>
+						<td> <a href="<c:url value="/viewProduct/${product.id}" />"> <i class="fa fa-info-circle"></i> </a> </td>
 					</tr>
 				</c:forEach>
 			</tbody>
