@@ -23,16 +23,34 @@
 					href="<c:url value="/products"/>">Products</a>
 				</li>
 				
-				<li class="nav-item"><a class="nav-link"
+				<%-- <li class="nav-item"><a class="nav-link"
 					href="<c:url value="/admin"/>">Admin</a>
-				</li>
+				</li> --%>
+				
+				<c:if test="${pageContext.request.userPrincipal.name != null}">
+					<c:if test="${pageContext.request.userPrincipal.name == 'admin'}">
+						<li class="nav-item"><a class="nav-link" href="<c:url value="/admin"/>" >AdminPage</a></li>
+					</c:if>
+					
+					<li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logout').submit()">Logout</a></li>
+					
+					<form id="logout" action="<c:url value="/logout" />" method="post">
+						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
+					</form>
+				</c:if>
+				
+				<c:if test="${pageContext.request.userPrincipal.name == null}">
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/login"/>" >Login</a></li>
+				</c:if>
 				
 			</ul>
+			
 			<form class="form-inline mt-2 mt-md-0">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search"
 					aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			</form>
+			
 		</div>
 	</nav>
 </header>
