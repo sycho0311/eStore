@@ -1,21 +1,21 @@
 package kr.ac.hansung.cse.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
-import javax.sql.DataSource;
-
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.hansung.cse.model.Product;
 
 @Repository
+@Transactional
 public class ProductDao {
 
+	/*
 	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
@@ -106,4 +106,52 @@ public class ProductDao {
 		
 		return (jdbcTemplate.update(sqlStatement, new Object []{name, category, price, manufacturer, unitInStock, description, id}) == 1);
 	}
+	*/
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	public Product getProductById(int id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Product product = (Product) session.get(Product.class, id);
+		
+		return product;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Product> getProducts() {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Product");
+		List<Product> productList = query.list(); // type conversion
+		
+		return productList;
+	}
+	
+	public void addProduct(Product product) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(product);
+		session.flush(); // transaction commit 될 때 자동으로 flush
+		
+	}
+	
+	
+	public void deleteProduct(Product product) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(product);
+		session.flush();
+		
+	}
+	
+	public void updateProduct(Product product) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(product);
+		session.flush(); 
+		
+	}
+	
 }
