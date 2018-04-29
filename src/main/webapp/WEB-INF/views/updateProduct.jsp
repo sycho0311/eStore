@@ -9,7 +9,8 @@
 		<h2>Update Product</h2>
 		<p class="lead">Fill the below information to add a product :</p>
 	
-		<sf:form action="${pageContext.request.contextPath}/admin/productInventory/updateProduct" method="post" modelAttribute="product">
+		<sf:form action="${pageContext.request.contextPath}/admin/productInventory/updateProduct?${_csrf.parameterName}=${_csrf.token}" 
+				method="post" modelAttribute="product" enctype="multipart/form-data">
 		
 			<sf:hidden path="id"/>
 		
@@ -47,6 +48,11 @@
 				<label for="manufacturer">Manufacturer</label>
 				<sf:input path="manufacturer" id="manufacturer" class="form-control" />
 				<sf:errors path="manufacturer" cssStyle="color:#ff0000" />
+			</div>
+			
+			<div class="form-group">
+				<label for="productImage">Upload Picture</label>
+				<sf:input path="productImage" id="productImage" type="file" class="form-control" />
 			</div>
 			
 			<input type="submit" value="submit" class="btn btn-default">

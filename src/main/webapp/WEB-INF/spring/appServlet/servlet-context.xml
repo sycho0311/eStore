@@ -31,4 +31,9 @@
 		</beans:property>
 	</beans:bean>
 
+	<beans:bean
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		id="multipartResolver">
+		<beans:property name="maxUploadSize" value="10240000"></beans:property>
+	</beans:bean>
 </beans:beans>

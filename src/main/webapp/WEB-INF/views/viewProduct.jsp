@@ -7,11 +7,8 @@
 		<h2>Product Detail View</h2>
 
 		<div class="row">
-			<div class="col-md-6">
-				<c:set var="imageFilename"
-					value="/resources/images/${product.id}.jpg" />
-				<img src="<c:url value="${imageFilename}" />" alt="image"
-					style="width: 80%" />
+			<div class="col-md-6">				
+				<img src="<c:url value="/resources/images/${product.imageFilename}" />" alt="image" style="width : 80%" />
 			</div>
 
 			<div class="col-md-6">
