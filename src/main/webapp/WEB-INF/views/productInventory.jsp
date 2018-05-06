@@ -24,7 +24,7 @@
 			<tbody>
 				<c:forEach var="product" items="${products}">
 					<tr>
-						<td><img src="<c:url value="/resources/images/${product.imageFilename}" />" alt="image" style="width=:100%" /></td>
+						<td><img src="<c:url value="/resources/images/${product.imageFilename}" />" alt="image" style="width:100%" /></td>
 						<td>${product.name}</td>
 						<td>${product.category}</td>
 						<td>${product.price}</td>
