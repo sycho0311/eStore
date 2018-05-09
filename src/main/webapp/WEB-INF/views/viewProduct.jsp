@@ -2,41 +2,30 @@
 
 <div class="container-wrapper">
 
-	<div class="container marketing">
+	<div class="container">
 
-		<h2>Product Detail View</h2>
+		<h2>Product Detail</h2>
+		<p class="lead">Here is the detail information of the product</p>
 
 		<div class="row">
-			<div class="col-md-6">				
-				<img src="<c:url value="/resources/images/${product.imageFilename}" />" alt="image" style="width : 80%" />
+
+			<div class="col-md-6">
+				<img src="<c:url value="/resources/images/${product.imageFilename}" />" alt="image" style="width: 80%" />
 			</div>
 
 			<div class="col-md-6">
-				<table class="table table-striped">
-					<tbody>
-					<thead>
-						<tr class="bg-info">
-							<th>Name</th>
-							<th>Category</th>
-							<th>Price</th>
-							<th>Manufacturer</th>
-							<th>UnitInStock</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tr>
-						<td>${product.name}</td>
-						<td>${product.category}</td>
-						<td>${product.price}</td>
-						<td>${product.manufacturer}</td>
-						<td>${product.unitInStock}</td>
-						<td>${product.description}</td>
-					</tr>
-					</tbody>
-				</table>
+				<h3>${product.name}</h3>
+				<p><strong>Description : </strong>${product.description}</p>
+				<p><strong>Manufacturer : </strong>${product.manufacturer}</p>
+				<p><strong>Category : </strong>${product.category}</p>
+				<p><strong>Price : </strong>${product.price}</p>
+				<p><strong>UnitInStock : </strong>${product.unitInStock}</p>
 			</div>
+
 		</div>
-		<br/>
+
+		<br/> 
 		<a href="<c:url value="/products" />">Back to Products Page</a>
+	
 	</div>
 </div>
