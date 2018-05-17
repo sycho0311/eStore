@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    
+	<%-- <link href="<c:url value="/resources/images/icon.ico"/>" type="image/x-icon" rel="stlc_icon" sizes="16x16"> --%>
     <title><tiles:insertAttribute name="title" /></title>
 
     <!-- Bootstrap core CSS -->

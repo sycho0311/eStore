@@ -40,6 +40,10 @@ public class User {
 	@JoinColumn(unique=true)
 	private ShippingAddress shippingAddress;
 	
+	@OneToOne(optional=false, cascade=CascadeType.ALL) // optional=false --> Not Null
+	@JoinColumn(unique=true)
+	private Cart cart;
+	
 	private boolean enabled = false;
 	
 	private String authority;
