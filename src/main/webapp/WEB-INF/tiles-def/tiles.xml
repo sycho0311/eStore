@@ -59,6 +59,11 @@
 	<definition name="registerUserSuccess" extends="base">
 		<put-attribute name="title" value="Registeration Success page" />
 		<put-attribute name="body" value="/WEB-INF/views/registerUserSuccess.jsp" />
-	
 	</definition>
+	
+	<definition name="cart" extends="base">
+		<put-attribute name="title" value="Cart Information page" />
+		<put-attribute name="body" value="/WEB-INF/views/cart.jsp" />
+	</definition>
+	
 </tiles-definitions>

@@ -11,7 +11,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-	<%-- <link href="<c:url value="/resources/images/icon.ico"/>" type="image/x-icon" rel="stlc_icon" sizes="16x16"> --%>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    
+	<link href="<c:url value="/resources/images/icon.ico"/>" type="image/x-icon" rel="short icon" sizes="16x16">
     <title><tiles:insertAttribute name="title" /></title>
 
     <!-- Bootstrap core CSS -->
@@ -21,7 +24,11 @@
     <link href="<c:url value="/resources/css/carousel.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
     
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">  
+    
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
     
   </head>
   <body>
