@@ -56,6 +56,21 @@ cartApp.controller("cartCtrl", function($scope, $http) {
 	
 	};
 	
+	$scope.minusCartItem = function(productId) {
+		
+		$scope.setCsrfToken();
+		
+		$http({
+			method : 'DELETE',
+			url : '/eStore/api/cart/minusitem/' + productId
+		}).then(function successCallback() {
+			$scope.refreshCart();
+		}, function errorCallback(response) {
+			console.log(response.data);
+		});
+	
+	};
+	
 	$scope.calGrandTotal = function() {
 		var grandTotal = 0;
 		

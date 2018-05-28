@@ -7,6 +7,13 @@
 		</encoder>
 	</appender>
 	
+	<logger name="org.hibernate.SQL" additivity="false">
+		<level value="DEBUG" />
+		<!-- Console Output -->
+		<appender-ref ref="consoleAppender" />
+	</logger>
+	
+	<!-- should be used together with org.hibernate.SQL -->
 	<logger name="org.hibernate.type" additivity="false">
 		<level value="TRACE" />
 		<!-- Console Output -->

@@ -28,4 +28,8 @@ public class CartItemService {
 	public CartItem getCartItemByProductId(int cartId, int productId) {
 		return cartItemDao.getCartItemByProductId(cartId, productId);
 	}
+	
+	public void minusItem(CartItem cartItem, double totalPrice) {
+		cartItemDao.minusItem(cartItem, totalPrice);
+	}
 }

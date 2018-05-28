@@ -105,4 +105,23 @@ public class CartRestController {
 		
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
+	
+	@RequestMapping(value = "/minusitem/{productId}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> minusItem(@PathVariable(value="productId") int productId) {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName();
+		
+		User user = userService.getUserByUsername(username);
+		Cart cart = user.getCart();
+		
+		CartItem cartItem = cartItemService.getCartItemByProductId(cart.getId(), productId);
+		
+		Product product = productService.getProductById(productId);
+		
+		cartItemService.minusItem(cartItem, product.getPrice());
+		
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+	}
+	
 }

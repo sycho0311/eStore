@@ -6,6 +6,7 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,6 +49,25 @@ public class CartItemDao {
 		query.setParameter(1, productId);
 		
 		return (CartItem) query.getSingleResult();
+	}
+
+	public void minusItem(CartItem cartItem, double totalPrice) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		int quantity = cartItem.getQuantity();
+		
+		if (quantity <= 0)
+			return;
+		
+		String hql = "update CartItem set quantity = :quantity, totalPrice = :totalPrice where id = :id";
+
+		Query query = session.createQuery(hql);
+		query.setParameter("quantity", quantity-1);
+		query.setParameter("totalPrice", totalPrice * (quantity-1));
+		query.setParameter("id", cartItem.getId());
+
+		query.executeUpdate();
 	}
 
 }
