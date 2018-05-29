@@ -50,6 +50,25 @@ public class CartItemDao {
 		
 		return (CartItem) query.getSingleResult();
 	}
+	
+	public void plusItem(CartItem cartItem, double totalPrice, int unitInStock) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		int quantity = cartItem.getQuantity();
+		
+		if (quantity >= unitInStock)
+			return;
+		
+		String hql = "update CartItem set quantity = :quantity, totalPrice = :totalPrice where id = :id";
+
+		Query query = session.createQuery(hql);
+		query.setParameter("quantity", quantity+1);
+		query.setParameter("totalPrice", totalPrice * (quantity+1));
+		query.setParameter("id", cartItem.getId());
+
+		query.executeUpdate();
+	}
 
 	public void minusItem(CartItem cartItem, double totalPrice) {
 		

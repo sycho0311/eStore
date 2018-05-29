@@ -29,6 +29,10 @@ public class CartItemService {
 		return cartItemDao.getCartItemByProductId(cartId, productId);
 	}
 	
+	public void plusItem(CartItem cartItem, double totalPrice, int unitInStock) {
+		cartItemDao.plusItem(cartItem, totalPrice, unitInStock);
+	}
+	
 	public void minusItem(CartItem cartItem, double totalPrice) {
 		cartItemDao.minusItem(cartItem, totalPrice);
 	}

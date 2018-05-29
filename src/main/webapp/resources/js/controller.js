@@ -56,6 +56,21 @@ cartApp.controller("cartCtrl", function($scope, $http) {
 	
 	};
 	
+	$scope.plusCartItem = function(productId) {
+		
+		$scope.setCsrfToken();
+		
+		$http({
+			method : 'PUT',
+			url : '/eStore/api/cart/plusitem/' + productId
+		}).then(function successCallback() {
+			$scope.refreshCart();
+		}, function errorCallback(response) {
+			console.log(response.data);
+		});
+	
+	};
+	
 	$scope.minusCartItem = function(productId) {
 		
 		$scope.setCsrfToken();

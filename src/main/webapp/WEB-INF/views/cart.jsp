@@ -40,7 +40,7 @@
 						<td>{{item.totalPrice}}</td>
 						<td><a class="btn btn-danger" ng-click="removeFromCart(item.product.id)">
 							<i class="fa fa-times"></i>remove</a></td>
-						<td><a class="btn btn-danger" ng-click="removeFromCart(item.product.id)">
+						<td><a class="btn btn-danger" ng-click="plusCartItem(item.product.id)">
 							<i class="fa fa-plus"></i>plus</a></td>
 						<td><a class="btn btn-danger" ng-click="minusCartItem(item.product.id)">
 							<i class="fa fa-minus"></i>minus</a></td>
