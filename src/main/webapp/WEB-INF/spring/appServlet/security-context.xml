@@ -18,6 +18,8 @@
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/admin/**" access='hasRole("ROLE_ADMIN")' />
 		<security:form-login login-page="/login" authentication-failure-url="/login?error=1" />
+		
+		<!-- To avoid using spring security default value -->
 		<!-- <security:headers disabled="true"></security:headers> -->
 	</security:http>
 	

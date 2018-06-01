@@ -42,8 +42,8 @@ public class CartRestController {
 	public ResponseEntity<Cart> getCartById(@PathVariable(value="cartId") int cartId) {
 		Cart cart = cartService.getCartById(cartId);
 		
-		HttpHeaders headers = new HttpHeaders();
-		headers.setCacheControl("max-age=10");
+		/*HttpHeaders headers = new HttpHeaders();
+		headers.setCacheControl("max-age=10");*/
 		
 		return new ResponseEntity<Cart>(cart, HttpStatus.OK);
 	}
@@ -124,9 +124,11 @@ public class CartRestController {
 		
 		Product product = productService.getProductById(productId);
 		
-		cartItemService.plusItem(cartItem, product.getPrice(), product.getUnitInStock());
+		if (cartItemService.plusItem(cartItem, product.getPrice(), product.getUnitInStock()))
+			return new ResponseEntity<Void>(HttpStatus.OK);
 		
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		else
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
 	@RequestMapping(value = "/minusitem/{productId}", method=RequestMethod.PUT)
@@ -142,9 +144,11 @@ public class CartRestController {
 		
 		Product product = productService.getProductById(productId);
 		
-		cartItemService.minusItem(cartItem, product.getPrice());
+		if (cartItemService.minusItem(cartItem, product.getPrice()))
+			return new ResponseEntity<Void>(HttpStatus.OK);
 		
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		else
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
 }

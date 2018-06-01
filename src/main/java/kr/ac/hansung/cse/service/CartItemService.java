@@ -29,11 +29,11 @@ public class CartItemService {
 		return cartItemDao.getCartItemByProductId(cartId, productId);
 	}
 	
-	public void plusItem(CartItem cartItem, double totalPrice, int unitInStock) {
-		cartItemDao.plusItem(cartItem, totalPrice, unitInStock);
+	public boolean plusItem(CartItem cartItem, double totalPrice, int unitInStock) {
+		return cartItemDao.plusItem(cartItem, totalPrice, unitInStock);
 	}
 	
-	public void minusItem(CartItem cartItem, double totalPrice) {
-		cartItemDao.minusItem(cartItem, totalPrice);
+	public boolean minusItem(CartItem cartItem, double totalPrice) {
+		return cartItemDao.minusItem(cartItem, totalPrice);
 	}
 }

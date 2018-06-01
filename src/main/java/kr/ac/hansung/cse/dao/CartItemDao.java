@@ -51,14 +51,14 @@ public class CartItemDao {
 		return (CartItem) query.getSingleResult();
 	}
 	
-	public void plusItem(CartItem cartItem, double totalPrice, int unitInStock) {
+	public boolean plusItem(CartItem cartItem, double totalPrice, int unitInStock) {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
 		int quantity = cartItem.getQuantity();
 		
 		if (quantity >= unitInStock)
-			return;
+			return false;
 		
 		String hql = "update CartItem set quantity = :quantity, totalPrice = :totalPrice where id = :id";
 
@@ -68,16 +68,18 @@ public class CartItemDao {
 		query.setParameter("id", cartItem.getId());
 
 		query.executeUpdate();
+		
+		return true;
 	}
 
-	public void minusItem(CartItem cartItem, double totalPrice) {
+	public boolean minusItem(CartItem cartItem, double totalPrice) {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
 		int quantity = cartItem.getQuantity();
 		
 		if (quantity <= 0)
-			return;
+			return false;
 		
 		String hql = "update CartItem set quantity = :quantity, totalPrice = :totalPrice where id = :id";
 
@@ -87,6 +89,8 @@ public class CartItemDao {
 		query.setParameter("id", cartItem.getId());
 
 		query.executeUpdate();
+		
+		return true;
 	}
 
 }
