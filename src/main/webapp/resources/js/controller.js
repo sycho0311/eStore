@@ -76,7 +76,7 @@ cartApp.controller("cartCtrl", function($scope, $http) {
 		$scope.setCsrfToken();
 		
 		$http({
-			method : 'DELETE',
+			method : 'PUT',
 			url : '/eStore/api/cart/minusitem/' + productId
 		}).then(function successCallback() {
 			$scope.refreshCart();

@@ -3,6 +3,7 @@ package kr.ac.hansung.cse.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -40,6 +41,10 @@ public class CartRestController {
 	@RequestMapping(value = "/{cartId}", method = RequestMethod.GET)
 	public ResponseEntity<Cart> getCartById(@PathVariable(value="cartId") int cartId) {
 		Cart cart = cartService.getCartById(cartId);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setCacheControl("max-age=10");
+		
 		return new ResponseEntity<Cart>(cart, HttpStatus.OK);
 	}
 	
@@ -121,10 +126,10 @@ public class CartRestController {
 		
 		cartItemService.plusItem(cartItem, product.getPrice(), product.getUnitInStock());
 		
-		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/minusitem/{productId}", method=RequestMethod.DELETE)
+	@RequestMapping(value = "/minusitem/{productId}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> minusItem(@PathVariable(value="productId") int productId) {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -139,7 +144,7 @@ public class CartRestController {
 		
 		cartItemService.minusItem(cartItem, product.getPrice());
 		
-		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
 }
