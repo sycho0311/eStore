@@ -14,6 +14,7 @@
 	</logger>
 	
 	<!-- should be used together with org.hibernate.SQL -->
+	<!-- show parameter and result log -->
 	<logger name="org.hibernate.type" additivity="false">
 		<level value="TRACE" />
 		<!-- Console Output -->

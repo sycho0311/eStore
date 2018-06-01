@@ -112,7 +112,7 @@ public class CartRestController {
 	}
 	
 	@RequestMapping(value = "/plusitem/{productId}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> plusItem(@PathVariable(value="productId") int productId) {
+	public ResponseEntity<CartItem> plusItem(@PathVariable(value="productId") int productId) {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String username = authentication.getName();
@@ -125,14 +125,14 @@ public class CartRestController {
 		Product product = productService.getProductById(productId);
 		
 		if (cartItemService.plusItem(cartItem, product.getPrice(), product.getUnitInStock()))
-			return new ResponseEntity<Void>(HttpStatus.OK);
+			return new ResponseEntity<CartItem>(cartItem, HttpStatus.OK);
 		
 		else
-			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<CartItem>(HttpStatus.NO_CONTENT);
 	}
 	
 	@RequestMapping(value = "/minusitem/{productId}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> minusItem(@PathVariable(value="productId") int productId) {
+	public ResponseEntity<CartItem> minusItem(@PathVariable(value="productId") int productId) {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String username = authentication.getName();
@@ -145,10 +145,10 @@ public class CartRestController {
 		Product product = productService.getProductById(productId);
 		
 		if (cartItemService.minusItem(cartItem, product.getPrice()))
-			return new ResponseEntity<Void>(HttpStatus.OK);
+			return new ResponseEntity<CartItem>(cartItem, HttpStatus.OK);
 		
 		else
-			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<CartItem>(HttpStatus.NO_CONTENT);
 	}
 	
 }
